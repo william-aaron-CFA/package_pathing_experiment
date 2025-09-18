@@ -14,6 +14,10 @@ def write_junk_file(dir):
     with open(f"{dir}/test.txt", 'a+') as f:
         f.write("I am writing junk.\n")
 
+def print_config_section(config_section):
+    for key,value in config_section.items():
+        print(f"{key} = {value}")
+
 if __name__ == "__main__":
 
     args = get_options()
@@ -21,4 +25,7 @@ if __name__ == "__main__":
     config = ConfigParser(interpolation = ExtendedInterpolation())
     config.read('config.ini')
     #write_junk_file(config[args.mode]['OUTPUT_DIR'])
-    write_junk_file(config.get(args.mode, 'OUTPUT_DIR'))
+    #write_junk_file(config.get(args.mode, 'OUTPUT_DIR'))
+
+    print_config_section(config[args.mode])
+
