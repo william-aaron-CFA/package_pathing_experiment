@@ -1,9 +1,8 @@
 #!/proj/sot/ska3/flight/bin/python
 
-from configparser import ConfigParser
+#from configparser import ConfigParser
+from configparser import ConfigParser, ExtendedInterpolation
 import argparse
-import os
-
 
 def get_options():
     parser = argparse.ArgumentParser()
@@ -18,6 +17,8 @@ def write_junk_file(dir):
 if __name__ == "__main__":
 
     args = get_options()
-    config = ConfigParser()
+    #config = ConfigParser()
+    config = ConfigParser(interpolation = ExtendedInterpolation())
     config.read('config.ini')
-    write_junk_file(config[args.mode]['OUTPUT_DIR'])
+    #write_junk_file(config[args.mode]['OUTPUT_DIR'])
+    write_junk_file(config.get(args.mode, 'OUTPUT_DIR'))
