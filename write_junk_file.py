@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
     args = get_options()
     #config = ConfigParser()
-    config = ConfigParser(interpolation = ExtendedInterpolation())
+    config = ConfigParser(interpolation = ExtendedInterpolation(), default_section='primary')
     config.read('config.ini')
     #write_junk_file(config[args.mode]['OUTPUT_DIR'])
     #write_junk_file(config.get(args.mode, 'OUTPUT_DIR'))
