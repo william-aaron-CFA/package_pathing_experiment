@@ -1,10 +1,11 @@
 #!/proj/sot/ska3/flight/bin/python
 
-#from configparser import ConfigParser
 from configparser import ConfigParser, ExtendedInterpolation
-
-_X = 10 + 45
 import argparse
+from write_junk_file import write_junk_file
+
+_CONFIGS = ConfigParser(interpolation = ExtendedInterpolation(), default_section='primary')
+_CONFIGS.read('config.ini')
 
 def get_options():
     parser = argparse.ArgumentParser()
@@ -16,12 +17,8 @@ def print_config_section(config_section):
         print(f"{key} = {value}")
 
 if __name__ == "__main__":
-
+    #: Determine Config Section
     args = get_options()
-    #config = ConfigParser()
-    config = ConfigParser(interpolation = ExtendedInterpolation(), default_section='primary')
-    config.read('config.ini')
-    #write_junk_file(config[args.mode]['OUTPUT_DIR'])
-    #write_junk_file(config.get(args.mode, 'OUTPUT_DIR'))
-
-    print_config_section(config[args.mode])
+    CONFIG = _CONFIGS[args.mode]
+    print_config_section(CONFIG)
+    write_junk_file(CONFIG)
