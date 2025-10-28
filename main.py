@@ -1,10 +1,10 @@
 #!/proj/sot/ska3/flight/bin/python
 import os
-import package
+import foobar
 import argparse
 from configparser import ConfigParser, ExtendedInterpolation
 _CONFIGS = ConfigParser(interpolation = ExtendedInterpolation(), default_section='primary')
-_CONFIGS.read('config.ini')
+_CONFIGS.read('foobar/config.ini')
 
 def get_options():
     parser = argparse.ArgumentParser()
@@ -25,5 +25,5 @@ if __name__ == "__main__":
     #: Determine Config Section
     args = get_options()
     config = load_config(args.mode)
-    package.print_config(config)
-    package.write_junk_file(config)
+    foobar.print_config(config)
+    foobar.write_junk_file(config)
