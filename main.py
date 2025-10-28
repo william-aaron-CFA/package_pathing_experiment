@@ -4,7 +4,7 @@ import foobar
 import argparse
 from configparser import ConfigParser, ExtendedInterpolation
 _CONFIGS = ConfigParser(interpolation = ExtendedInterpolation(), default_section='primary')
-_CONFIGS.read('config.ini')
+_CONFIGS.read('foobar/config.ini')
 
 def get_options():
     parser = argparse.ArgumentParser()
